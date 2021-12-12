@@ -1,6 +1,3 @@
 dbus-python
 podman
 termcolor
-
-# for fedora, just install the rpms
-# dnf install -y python3-podman python3-pydbus python3-termcolor
