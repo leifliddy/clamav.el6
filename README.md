@@ -7,7 +7,7 @@ All RPMs build save for clamav-data, which I had to remove due to the size of th
 
 to build:
 ```
-# create podman image and run container
+# create podman image and run the container
 ./script-podman.py
 
 # then login to the container with:
