@@ -19,7 +19,7 @@ dnf install podman python3-podman python3-pydbus python3-termcolor
 podman exec -it clamav_builder_6 /bin/bash
 
 # copy rpms to shared volume output_rpms/
-./1.copy.rpms.to.output_rpm.sh
+./01.copy.rpms.to.output_rpm.sh
 
 # logout of the container with 
 Control+D or exit

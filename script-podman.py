@@ -42,7 +42,7 @@ def check_podman_installed():
     for rpm_pkg in rpm_listing:
         if rpm_pkg['name'] == 'podman':
             podman_installed = True
-              
+
     if podman_installed:
         print_yes()
     else:
@@ -55,9 +55,9 @@ def check_podman_installed():
 def ensure_podman_socket_running():
     # system-level = SystemBus
     #bus = dbus.SystemBus()
-    # user-level = SessionBus, equivalent of running 
+    # user-level = SessionBus, equivalent of running
     # systemctl --user start podman.socket
-    bus = dbus.SessionBus()    
+    bus = dbus.SessionBus()
     systemd = bus.get_object('org.freedesktop.systemd1', '/org/freedesktop/systemd1')
     manager = dbus.Interface(systemd, 'org.freedesktop.systemd1.Manager')
     service = 'podman.socket'
@@ -84,12 +84,12 @@ def ensure_image_exists():
             cprint('DEBUG: to manually build the image:', 'yellow')
             cprint('{}'.format(podman_build_image_manual), 'yellow', attrs=['bold'])
 
-        cmd_output = subprocess.run(['podman', 'build', '--squash', '-t', podman_image_name, cur_dir], universal_newlines=True)        
+        cmd_output = subprocess.run(['podman', 'build', '--squash', '-t', podman_image_name, cur_dir], universal_newlines=True)
 
         cprint('{0:.<70}'.format('PODMAN: build image'), 'yellow', end='')
         if cmd_output.returncode != 0:
             print_failure()
-            cprint('Exiting...', 'red')            
+            cprint('Exiting...', 'red')
         else:
             print_success()
 
@@ -108,11 +108,11 @@ def ensure_image_removed():
 
 def ensure_container_exists_and_running():
     cprint('{0:.<70}'.format('PODMAN: checking if container exists'), 'yellow', end='')
-    container_exists = client.containers.list(all=True, filters = { "name" : podman_container_name})    
+    container_exists = client.containers.list(all=True, filters = { "name" : podman_container_name})
 
     if container_exists:
-        print_yes()      
-        podman_container = client.containers.get(podman_container_name) 
+        print_yes()
+        podman_container = client.containers.get(podman_container_name)
         container_status = podman_container.status
 
         cprint('{0:.<70}'.format('PODMAN: checking if container is running'), 'yellow', end='')
@@ -135,8 +135,8 @@ def create_mounts_dict(host_mount, container_mount):
                'type':   'bind',
                'source': host_mount,
                'target': container_mount,
-             }        
-    
+             }
+
     return mounts
 
 
@@ -145,8 +145,8 @@ def ensure_container_stopped_removed(remove_container=True):
     container_exists = client.containers.list(all=True, filters = {'name' : podman_container_name})
 
     if container_exists:
-        print_yes()      
-        podman_container = client.containers.get(podman_container_name) 
+        print_yes()
+        podman_container = client.containers.get(podman_container_name)
         container_status = podman_container.status
 
         cprint('{0:.<70}'.format('PODMAN: checking if container is running'), 'yellow', end='')
@@ -174,13 +174,13 @@ def run_container():
     output_rpm_dir_container  = '/output_rpm'
 
     bind_volumes.append(create_mounts_dict(output_rpm_dir_host, output_rpm_dir_container))
-     
+
     if args.debug:
         docker_run_cmd_manual = 'podman run -d -it --privileged=true -v $(pwd)/output_rpm:/root/output_rpm -h {} --name {} {}\n'.format(container_hostname, podman_container_name, podman_image_name)
         cprint('DEBUG: to manually run the container:', 'yellow')
         cprint('{}'.format(docker_run_cmd_manual), 'yellow', attrs=['bold'])
 
-    client.containers.run(image=podman_image_name, name=podman_container_name, hostname=container_hostname, detach=True, tty=True, privileged=True, mounts=bind_volumes)    
+    client.containers.run(image=podman_image_name, name=podman_container_name, hostname=container_hostname, detach=True, tty=True, privileged=True, mounts=bind_volumes)
 
 
 if __name__ == "__main__":
@@ -208,14 +208,14 @@ if __name__ == "__main__":
     group.add_argument('--stop_container',
                         action='store_true',
                         help='stop container if it exists and is running',
-                        default=False)                        
-                        
+                        default=False)
+
     args = parser.parse_args()
-    
-                            
+
+
     check_podman_installed()
     ensure_podman_socket_running()
-    client = PodmanClient()    
+    client = PodmanClient()
 
     if args.rm_image:
         ensure_container_stopped_removed()

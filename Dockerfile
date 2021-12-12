@@ -3,7 +3,7 @@ FROM registry.centos.org/centos:6
 COPY files/*.repo /etc/yum.repos.d
 COPY files/RPM-GPG-KEY-EPEL-6 /tmp
 COPY files/clamav-0.103.4-1.el6.src.rpm /root
-COPY files/1.copy.rpms.to.output_rpm.sh /root
+COPY files/01.copy.rpms.to.output_rpm.sh /root
 
 RUN rm -f /etc/yum.repos.d/CentOS-* &&\
     yum update -y &&\
@@ -28,7 +28,7 @@ RUN rm -f /etc/yum.repos.d/CentOS-* &&\
     rm -rf /output_rpm/* 2> /dev/null &&\
     rpm -ivh /root/clamav-0.103.4-1.el6.src.rpm &&\
     rpmbuild -ba /root/rpmbuild/SPECS/clamav.spec
- 
+
 WORKDIR /root
 
 CMD ["/bin/bash"]

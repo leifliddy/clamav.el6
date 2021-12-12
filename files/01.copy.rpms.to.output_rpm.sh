@@ -1,6 +1,6 @@
 #!/bin/bash
 
-find /output_rpm/ -type f | grep '\.rpm$' | xargs rm -f 
+find /output_rpm/ -type f | grep '\.rpm$' | xargs rm -f
 find /root/rpmbuild/RPMS/ -type f | grep '\.rpm$' | xargs cp -t /output_rpm/
 
 # copy SRPM
