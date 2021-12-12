@@ -1,0 +1,15 @@
+[epel]
+name=epel
+#baseurl=http://mirror.umd.edu/fedora/epel/6/x86_64/
+#baseurl=https://fedora-archive.ip-connect.info/epel/6/x86_64/
+baseurl=https://ftp-stud.hs-esslingen.de/pub/Mirrors/archive.fedoraproject.org/epel/6/x86_64/
+enabled=1
+gpgcheck=1
+gpgkey=http://mirror.umd.edu/fedora/epel/RPM-GPG-KEY-EPEL-6
+
+[epel-source]
+name=epel-source
+baseurl=https://ftp-stud.hs-esslingen.de/pub/Mirrors/archive.fedoraproject.org/epel/6/SRPMS/
+enabled=0
+gpgcheck=1
+gpgkey=http://mirror.umd.edu/fedora/epel/RPM-GPG-KEY-EPEL-6
