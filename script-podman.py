@@ -176,9 +176,9 @@ def run_container():
     bind_volumes.append(create_mounts_dict(output_rpm_dir_host, output_rpm_dir_container))
 
     if args.debug:
-        docker_run_cmd_manual = 'podman run -d -it --privileged=true -v $(pwd)/output_rpm:/root/output_rpm -h {} --name {} {}\n'.format(container_hostname, podman_container_name, podman_image_name)
+        podman_run_cmd_manual = 'podman run -d -it --privileged=true -v $(pwd)/output_rpm:/root/output_rpm -h {} --name {} {}\n'.format(container_hostname, podman_container_name, podman_image_name)
         cprint('DEBUG: to manually run the container:', 'yellow')
-        cprint('{}'.format(docker_run_cmd_manual), 'yellow', attrs=['bold'])
+        cprint('{}'.format(podman_run_cmd_manual), 'yellow', attrs=['bold'])
 
     client.containers.run(image=podman_image_name, name=podman_container_name, hostname=container_hostname, detach=True, tty=True, privileged=True, mounts=bind_volumes)
 
@@ -194,12 +194,12 @@ if __name__ == "__main__":
                         default=False)
     group.add_argument('--rebuild',
                         action='store_true',
-                        help='remove docker image and container if they exist, '
-                             'then build (new) docker image and run container',
+                        help='remove podman image and container if they exist, '
+                             'then build (new) podman image and run container',
                         default=False)
     group.add_argument('--rm_image',
                         action='store_true',
-                        help='remove docker image and container if they exist',
+                        help='remove podman image and container if they exist',
                         default=False)
     group.add_argument('--rm_container',
                         action='store_true',
