@@ -2,7 +2,7 @@
 
 Build the **clamav-0.103.4-1** rpms for Centos 6 systems
 
-I modified the clamav-0.103.4-1 Centos 7 SRPM to make it compatible for Centos 6 systems.
+I modified the clamav-0.103.4-1 Centos 7 SRPM and made it compatible for Centos 6 systems.
 All RPMs build save for clamav-data, which I had to remove due to the size of the cvd files.
 
 to build:
