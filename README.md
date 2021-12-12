@@ -1,4 +1,4 @@
-# clamav.el6
+# podman-clamav-el6
 
 Build the **clamav-0.103.4-1** rpms for Centos 6 systems
 
