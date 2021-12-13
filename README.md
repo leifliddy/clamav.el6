@@ -14,6 +14,7 @@ dnf install podman python3-podman python3-pydbus python3-termcolor
 **to build**
 ```
 # create podman image and run the container
+# run script as a normal user, not as root
 ./script-podman.py
 
 # then login to the container with:
@@ -29,12 +30,12 @@ Control+D or exit
 
 [root@black podman-clamav-el6]$ ll output_rpm/
 total 7492
--rw-r--r--. 1 root root 3125924 Dec 12 03:36 clamav-0.103.4-1.el6.x86_64.rpm
--rw-r--r--. 1 root root 3304636 Dec 12 03:36 clamav-debuginfo-0.103.4-1.el6.x86_64.rpm
--rw-r--r--. 1 root root   49992 Dec 12 03:36 clamav-devel-0.103.4-1.el6.x86_64.rpm
--rw-r--r--. 1 root root   42396 Dec 12 03:36 clamav-filesystem-0.103.4-1.el6.noarch.rpm
--rw-r--r--. 1 root root  810496 Dec 12 03:36 clamav-lib-0.103.4-1.el6.x86_64.rpm
--rw-r--r--. 1 root root   84080 Dec 12 03:36 clamav-milter-0.103.4-1.el6.x86_64.rpm
--rw-r--r--. 1 root root  123496 Dec 12 03:36 clamav-update-0.103.4-1.el6.x86_64.rpm
--rw-r--r--. 1 root root  114148 Dec 12 03:36 clamd-0.103.4-1.el6.x86_64.rpm
+-rw-r--r--. 1 leif.liddy leif.liddy 3125924 Dec 12 03:36 clamav-0.103.4-1.el6.x86_64.rpm
+-rw-r--r--. 1 leif.liddy leif.liddy 3304636 Dec 12 03:36 clamav-debuginfo-0.103.4-1.el6.x86_64.rpm
+-rw-r--r--. 1 leif.liddy leif.liddy   49992 Dec 12 03:36 clamav-devel-0.103.4-1.el6.x86_64.rpm
+-rw-r--r--. 1 leif.liddy leif.liddy   42396 Dec 12 03:36 clamav-filesystem-0.103.4-1.el6.noarch.rpm
+-rw-r--r--. 1 leif.liddy leif.liddy  810496 Dec 12 03:36 clamav-lib-0.103.4-1.el6.x86_64.rpm
+-rw-r--r--. 1 leif.liddy leif.liddy   84080 Dec 12 03:36 clamav-milter-0.103.4-1.el6.x86_64.rpm
+-rw-r--r--. 1 leif.liddy leif.liddy  123496 Dec 12 03:36 clamav-update-0.103.4-1.el6.x86_64.rpm
+-rw-r--r--. 1 leif.liddy leif.liddy  114148 Dec 12 03:36 clamd-0.103.4-1.el6.x86_64.rpm
 ```
