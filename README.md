@@ -28,7 +28,7 @@ Control+D or exit
 
 # the RPM's will now be found in output_rpms/
 
-[root@black podman-clamav-el6]$ ll output_rpm/
+[leif.liddy@black podman-clamav-el6]$ ll output_rpm/
 total 7492
 -rw-r--r--. 1 leif.liddy leif.liddy 3125924 Dec 12 03:36 clamav-0.103.4-1.el6.x86_64.rpm
 -rw-r--r--. 1 leif.liddy leif.liddy 3304636 Dec 12 03:36 clamav-debuginfo-0.103.4-1.el6.x86_64.rpm
