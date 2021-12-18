@@ -53,11 +53,11 @@ def check_podman_installed():
 
 
 def ensure_podman_socket_running():
-    # system-level = SystemBus
-    #bus = dbus.SystemBus()
-    # user-level = SessionBus, equivalent of running
-    # systemctl --user start podman.socket
-    bus = dbus.SessionBus()
+    if os.geteuid() == 0:
+        bus = dbus.SystemBus()
+    else:
+        bus = dbus.SessionBus()
+
     systemd = bus.get_object('org.freedesktop.systemd1', '/org/freedesktop/systemd1')
     manager = dbus.Interface(systemd, 'org.freedesktop.systemd1.Manager')
     service = 'podman.socket'
