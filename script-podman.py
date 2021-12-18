@@ -236,7 +236,7 @@ if __name__ == "__main__":
 
 
     cprint('{0:.<70}'.format('PODMAN: image name'), 'yellow', end='')
-    cprint(' {}'.format(podman_container_name), 'cyan')
+    cprint(' {}'.format(podman_image_name), 'cyan')
 
     ensure_image_exists()
 
