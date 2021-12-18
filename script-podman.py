@@ -176,7 +176,7 @@ def run_container():
     bind_volumes.append(create_mounts_dict(output_rpm_dir_host, output_rpm_dir_container))
 
     if args.debug:
-        podman_run_cmd_manual = 'podman run -d -it --privileged=true -v $(pwd)/output_rpm:/root/output_rpm -h {} --name {} {}\n'.format(container_hostname, podman_container_name, podman_image_name)
+        podman_run_cmd_manual = 'podman run -d -it --privileged=true -v $(pwd)/output_rpm:/output_rpm -h {} --name {} {}\n'.format(container_hostname, podman_container_name, podman_image_name)
         cprint('DEBUG: to manually run the container:', 'yellow')
         cprint('{}'.format(podman_run_cmd_manual), 'yellow', attrs=['bold'])
 
