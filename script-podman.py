@@ -80,7 +80,7 @@ def ensure_image_exists():
         cur_dir = os.path.dirname(os.path.realpath(__file__))
 
         if args.debug:
-            podman_build_image_manual = 'podman build -t {} .'.format(podman_image_name)
+            podman_build_image_manual = 'podman build --squash -t {} .'.format(podman_image_name)
             cprint('DEBUG: to manually build the image:', 'yellow')
             cprint('{}'.format(podman_build_image_manual), 'yellow', attrs=['bold'])
 
