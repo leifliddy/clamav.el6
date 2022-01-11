@@ -18,19 +18,18 @@ container_hostname    = 'clam_builder'
 
 
 def print_yes():
-    cprint(' {}'.format('[YES]'), 'green')
+    cprint(' [YES]', 'green')
 
 
 def print_no():
-    cprint(' {}'.format('[NO]'), 'red')
-
+    cprint(' [NO]', 'red')
 
 def print_success():
-    cprint(' {}'.format('[SUCCESS]'), 'green')
+    cprint(' [SUCCESS]', 'green')
 
 
 def print_failure():
-    cprint(' {}'.format('[FAILURE]'), 'red')
+    cprint(' [FAILURE]', 'red')
 
 
 def check_podman_installed():
@@ -70,7 +69,7 @@ def ensure_podman_socket_running():
 
 def ensure_image_exists():
     cprint('{0:.<70}'.format('PODMAN: checking if image exists'), 'yellow', end='')
-    podman_image = client.images.list(filters = { 'reference' : podman_image_name})
+    podman_image = client.images.list(filters = {'reference' : podman_image_name})
 
     if podman_image:
         print_yes()
@@ -96,7 +95,7 @@ def ensure_image_exists():
 
 def ensure_image_removed():
     cprint('{0:.<70}'.format('PODMAN: checking if image exists'), 'yellow', end='')
-    podman_image_exists = client.images.list(filters = { 'reference' : podman_image_name})
+    podman_image_exists = client.images.list(filters = {'reference' : podman_image_name})
 
     if podman_image_exists:
         print_yes()
@@ -108,7 +107,7 @@ def ensure_image_removed():
 
 def ensure_container_exists_and_running():
     cprint('{0:.<70}'.format('PODMAN: checking if container exists'), 'yellow', end='')
-    container_exists = client.containers.list(all=True, filters = { "name" : podman_container_name})
+    container_exists = client.containers.list(all=True, filters = {'name' : podman_container_name})
 
     if container_exists:
         print_yes()
@@ -236,7 +235,7 @@ if __name__ == "__main__":
 
 
     cprint('{0:.<70}'.format('PODMAN: image name'), 'yellow', end='')
-    cprint(' {}'.format(podman_image_name), 'cyan')
+    cprint(' {}'.format(podman_container_name), 'cyan')
 
     ensure_image_exists()
 
