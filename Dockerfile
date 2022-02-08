@@ -7,7 +7,7 @@ COPY files/01.copy.rpms.to.output_rpm.sh /root
 
 RUN rm -f /etc/yum.repos.d/CentOS-* &&\
     yum update -y &&\
-    yum install -y vim-enhanced rpm-build rsync git wget yum-utils &&\
+    yum install -y rpm-build rsync vim-enhanced wget yum-utils &&\
     wget https://github.com/Kitware/CMake/releases/download/v3.13.5/cmake-3.13.5-Linux-x86_64.tar.gz -O /tmp/cmake.tar  &&\
     mkdir /tmp/cmake  &&\
     tar --strip-components=1 -xvf /tmp/cmake.tar --directory /tmp/cmake  &&\
@@ -32,4 +32,3 @@ RUN rm -f /etc/yum.repos.d/CentOS-* &&\
 WORKDIR /root
 
 CMD ["/bin/bash"]
-
