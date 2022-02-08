@@ -11,10 +11,16 @@ It's not really needed anyway, just pull in the latest definitions via ```freshc
 dnf install podman python3-podman python3-pydbus python3-termcolor
 ```
 
-**to build**
+**non-interactive auto build**
 ```
 # create podman image and run the container
-# run script as a normal user, not as root
+./script-podman.py --auto
+```
+
+**interactive build**  
+Useful if you need to modify the SRPM, troubleshoot an issue, test out the environment...etc
+```
+# create podman image and run the container
 ./script-podman.py
 
 # then login to the container with:
@@ -25,9 +31,10 @@ podman exec -it clamav_builder_6 /bin/bash
 
 # logout of the container with 
 Control+D or exit
+```
 
-# the RPM's will now be found in output_rpms/
-
+**the RPM's will now be found under output_rpm/**
+```
 [leif.liddy@black podman-clamav-el6]$ ll output_rpm/
 total 7492
 -rw-r--r--. 1 leif.liddy leif.liddy 3125924 Dec 12 03:36 clamav-0.103.4-1.el6.x86_64.rpm
