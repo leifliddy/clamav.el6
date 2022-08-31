@@ -10,6 +10,7 @@ from podman import PodmanClient
 from termcolor import cprint
 
 # import podman variables from local file
+sys.dont_write_bytecode = True
 from podman_variables import *
 
 
