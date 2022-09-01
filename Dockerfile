@@ -16,7 +16,7 @@ RUN rm -f /etc/yum.repos.d/CentOS-* &&\
     yum clean all &&\
     find /root/ -type f | egrep 'anaconda-ks.cfg|install.log|install.log.syslog' | xargs rm -f
 
-COPY files/bashrc-rpmbuild /root/.bashrc.d
+COPY files/bashrc-rpmbuild /root/.bashrc.d/rpmbuild
 
 # set login directory
 WORKDIR /root
