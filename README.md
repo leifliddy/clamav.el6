@@ -8,7 +8,7 @@ It's not really needed anyway, just pull in the latest definitions via ```freshc
 
 **Fedora package install**
 ```
-dnf install podman python3-podman python3-pydbus python3-termcolor
+dnf install podman python3-podman python3-termcolor
 ```
 
 **non-interactive auto build**
