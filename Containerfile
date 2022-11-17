@@ -10,7 +10,7 @@ COPY files/$clamav_srpm /root
 RUN rm -f /etc/yum.repos.d/CentOS-* &&\
     yum update -y &&\
     yum install -y rpm-build rsync vim-enhanced wget yum-utils &&\
-    mkdir /root/.bashrc.d /tmp/cmake  &&\
+    mkdir /root/.bashrc.d &&\
     rpm --import /tmp/RPM-GPG-KEY-EPEL-6 &&\
     yum-builddep -y /root/$clamav_srpm &&\
     yum clean all &&\
